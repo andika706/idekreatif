@@ -15,5 +15,5 @@ if ($com->connet_error) {
     die("Database gagal terkoneksi: " . $com->connet_error);
 }
 
-
+njvjdvdvd
 ?>
