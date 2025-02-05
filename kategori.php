@@ -34,7 +34,7 @@ $index = 1;
 $query = "SELECT * FROM categories";
 $exec = mysqli_query($conn, $query); // Pastikan $conn sudah didefinisikan (koneksi database)
 
-while ($category = mysqli_fetch_assoc($exec)): // Loop untuk setiap kategori
+while ($category = mysqli_fetch_assoc($exec)): 
 ?>
     <tr>
         <!-- menampilkan nomor kategori, dan opsi -->
@@ -91,4 +91,52 @@ while ($category = mysqli_fetch_assoc($exec)): // Loop untuk setiap kategori
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form action="…
+                <form action="proses_kategori.php" method="POST">
+                    <input type="hidden" name="catID" value="<?= $category['category_id']; ?>">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" value="<?= $category['category_name']; ?>" name="category_name" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" name="update" class="btn btn-warning">Update</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<?php endwhile; ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<?php include '.includes/footer.php'; ?>
+
+<!--modal untuk tambah data kategory --> 
+<div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="proses_kategori.php" method="POST">
+                    <div class="mb-3">
+                        <label for="namakategori" class="form-label">Nama Kategori</label>
+                        <input type="text" class="form-control" name="category_name" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 <?php
 require_once("../config.php");
 // mulai session
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -8,9 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (usename, name, password)
-    VALUES ('$username, $name, $hashedPassword')";
-    if ($conn->query($sql) == TRUE) {
+    $sql = "INSERT INTO users (username, name, password)
+    VALUES ('$username', '$name', '$hashedPassword')";
+    if ($conn->query($sql) === TRUE) {
         // simpan notifikasi ke dalam session
         $_SESSION['notification'] = [
             'type' => 'primary',
@@ -24,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     header('Location: login.php');
     exit();
-    jdjd
 }
 
 $conn->close();

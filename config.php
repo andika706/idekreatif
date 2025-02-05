@@ -1,19 +1,20 @@
 <?php
 
+//konfirgurasi koneksi database
+$host = "localhost";//nama host server database
+$username = "root";//username untuk akses ke database
+$password = "";//password untuk akses ke database
+$database = "idekreatif";//nama database yang digunakan
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "idekreatif";
+// membuat koneksi ke databasemenggunakan database mysqli
+$conn = mysqli_connect($host, $username, $password, $database);
 
+// mengecek apakah koneksi berhasil
+if ($conn->connect_error) {
+     //menampilkan pesan eror jika koneksi gagal
+    die("Database gagal terkoneksi: " . $conn->connect_error);
 
-$com = mysqli_connet($host, $username, $password, $database);
-
-
-if ($com->connet_error) {
-
-    die("Database gagal terkoneksi: " . $com->connet_error);
+    // jika koneksi berhasil script akan jalan tanpa pesan eror
+    
 }
-
-njvjdvdvd
 ?>
